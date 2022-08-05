@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { getVillains } = require('./data/villain-queries');
+const { getVillains, getVillainById } = require('./data/villain-queries');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -21,5 +21,12 @@ app.get('/movie-villains', (req, res) => {
     getVillains().then(villains => {
         const templateVars = {villains};
         res.render('movie-villains/index', templateVars);
+    });
+});
+
+app.get('/movie-villains/:id', (req, res) => {
+    getVillainById(req.params.id).then(villain => {
+        const templateVars = {villain};
+        res.render('movie-villains/show', templateVars);
     });
 });

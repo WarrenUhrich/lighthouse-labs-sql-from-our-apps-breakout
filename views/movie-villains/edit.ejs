@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Villains Edit (<%= villain.id %>)</title>
+</head>
+<body>
+    <h1>Movie Villains Edit (<%= villain.id %>)</h1>
+    <form method="POST" action="/movie-villains/<%= villain.id %>">
+        <label for="villain">Villain Name:</label>
+        <input id="villain" type="text" name="villain" value="<%= villain.villain %>">
+        <label for="movie">Villain Movie:</label>
+        <input id="movie" type="text" name="movie" value="<%= villain.movie %>">
+        <input type="submit" value="Update Villain">
+    </form>
+    <p>
+        <a href="/movie-villains">
+            Return to Movie Villains Index
+        </a>
+    </p>
+</body>
+</html>

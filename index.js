@@ -17,6 +17,10 @@ app.listen(PORT, () => {
     console.log('Express app listening on port:', PORT);
 });
 
+/******************************************************
+ * READ
+ ******************************************************/
+
 app.get('/movie-villains', (req, res) => {
     getVillains().then(villains => {
         const templateVars = {villains};
@@ -30,3 +34,18 @@ app.get('/movie-villains/:id', (req, res) => {
         res.render('movie-villains/show', templateVars);
     });
 });
+
+/******************************************************
+ * UPDATE
+ ******************************************************/
+
+// Edit form.
+app.get('/movie-villains/:id/edit', (req, res) => {
+    getVillainById(req.params.id).then(villain => {
+        const templateVars = { villain };
+        res.render('movie-villains/edit', templateVars);
+    });
+});
+
+// Form submission.
+app.post('/movie-villains/:id');

@@ -1,6 +1,12 @@
 require('dotenv').config();
 
-const { getVillains, getVillainById, updateVillain, createVillain } = require('./data/villain-queries');
+const {
+    getVillains,
+    getVillainById,
+    updateVillain,
+    createVillain,
+    deleteVillain
+} = require('./data/villain-queries');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -30,6 +36,16 @@ app.get('/movie-villains/new', (req, res) => {
 // Form submission.
 app.post('/movie-villains', (req, res) => {
     createVillain(req.body.villain, req.body.movie).then(() => {
+        res.redirect('/movie-villains');
+    });
+});
+
+/******************************************************
+ * DELETE
+ ******************************************************/
+
+app.post('/movie-villains/:id/delete', (req, res) => {
+    deleteVillain(req.params.id).then(() => {
         res.redirect('/movie-villains');
     });
 });

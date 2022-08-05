@@ -31,10 +31,17 @@ const createVillain = (villain, movie) => {
 };
 
 // DELETE:
+const deleteVillain = (id) => {
+    return client.query(
+        'DELETE FROM movie_villains WHERE id=$1',
+        [id]
+    );
+};
 
 module.exports = {
     getVillains,
     getVillainById,
     updateVillain,
     createVillain,
+    deleteVillain,
 };

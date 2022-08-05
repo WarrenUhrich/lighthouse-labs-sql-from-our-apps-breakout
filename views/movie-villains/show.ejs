@@ -15,6 +15,11 @@
         <a href="/movie-villains/<%= villain.id %>/edit">
             Edit this Villain
         </a>
+        <form method="POST" action="/movie-villains/<%= villain.id %>/delete">
+            <button type="submit">
+                Delete this Villain
+            </button>
+        </form>
     </p>
     <p>
         <a href="/movie-villains">

@@ -1,2 +1,3 @@
-# lighthouse-labs-sql-from-our-apps-breakout
-A breakout practicing Express and PostgreSQL.
+# Lighthouse Labs | SQL from our Apps Breakout
+
+A breakout for practicing Express and PostgreSQL.

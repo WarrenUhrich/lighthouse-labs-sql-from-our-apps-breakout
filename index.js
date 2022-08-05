@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { getVillains, getVillainById, updateVillain } = require('./data/villain-queries');
+const { getVillains, getVillainById, updateVillain, createVillain } = require('./data/villain-queries');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -16,6 +16,22 @@ app.use(morgan('dev'));
 
 app.listen(PORT, () => {
     console.log('Express app listening on port:', PORT);
+});
+
+/******************************************************
+ * CREATE
+ ******************************************************/
+
+// New form.
+app.get('/movie-villains/new', (req, res) => {
+    res.render('movie-villains/new');
+});
+
+// Form submission.
+app.post('/movie-villains', (req, res) => {
+    createVillain(req.body.villain, req.body.movie).then(() => {
+        res.redirect('/movie-villains');
+    });
 });
 
 /******************************************************

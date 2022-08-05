@@ -1,7 +1,9 @@
 const { client } = require('./connection');
 
-client.query('SELECT * FROM movie_villains;')
-    .then(result => result.rows)
-    .then(villains => {
-        console.log(villains);
-    });
+const getVillains = () =>
+    client.query('SELECT * FROM movie_villains;')
+        .then(result => result.rows);
+
+module.exports = {
+    getVillains
+};

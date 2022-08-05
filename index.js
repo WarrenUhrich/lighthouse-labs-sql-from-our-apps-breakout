@@ -16,3 +16,10 @@ app.use(morgan('dev'));
 app.listen(PORT, () => {
     console.log('Express app listening on port:', PORT);
 });
+
+app.get('/movie-villains', (req, res) => {
+    getVillains().then(villains => {
+        const templateVars = {villains};
+        res.render('movie-villains/index', templateVars);
+    });
+});

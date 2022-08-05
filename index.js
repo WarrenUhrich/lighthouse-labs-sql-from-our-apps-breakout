@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-const { getVillains, getVillainById } = require('./data/villain-queries');
+const { getVillains, getVillainById, updateVillain } = require('./data/villain-queries');
 
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -11,6 +11,7 @@ const PORT = process.env.PORT || 5000;
 
 app.set('view engine', 'ejs');
 
+app.use(bodyParser());
 app.use(morgan('dev'));
 
 app.listen(PORT, () => {
@@ -48,4 +49,8 @@ app.get('/movie-villains/:id/edit', (req, res) => {
 });
 
 // Form submission.
-app.post('/movie-villains/:id');
+app.post('/movie-villains/:id', (req, res) => {
+    updateVillain(req.params.id, req.body.villain, req.body.movie).then(() => {
+        res.redirect('/movie-villains/' + req.params.id);
+    });
+});
